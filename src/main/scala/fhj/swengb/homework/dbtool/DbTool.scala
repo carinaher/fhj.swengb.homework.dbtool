@@ -5,7 +5,40 @@ import java.sql.{Connection, DriverManager, ResultSet, Statement}
 import fhj.swengb.Person._
 import fhj.swengb.{Person, Students}
 
+import javafx.fxml._
+import javafx.scene._
+import javafx.stage._
+
 import scala.util.Try
+import scala.util.control.NonFatal
+
+
+/** MAL PROBIEREN :) **/
+
+class dbTool extends javafx.application.Application {
+
+
+  val Fxml = "/fhj/swengb/homework/dbtool/dbtool.fxml"
+  val Css = "fhj/swengb/homework/dbtool/dbtool.css"
+
+  val loader = new FXMLLoader(getClass.getResource(Fxml))
+
+  override def start(stage: Stage): Unit =
+    try {
+      stage.setTitle("dbTool")
+      val scene = new Scene(loader.getRoot[Parent])
+      stage.setScene(scene)
+      stage.getScene.getStylesheets.add(Css)
+      stage.show()
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+
+}
+
+
+
+
 
 /**
   * Example to connect to a database.
