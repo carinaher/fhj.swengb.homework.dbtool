@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
 /**
   * Created by Graf, Körner, Schneider, Karimova on 02.12.2015.
   */
-case class db_table extends DbEntity {
+object db_table {
 
   //Table Location
 
@@ -208,3 +208,7 @@ case class db_table extends DbEntity {
 
   }
 }
+
+
+
+
