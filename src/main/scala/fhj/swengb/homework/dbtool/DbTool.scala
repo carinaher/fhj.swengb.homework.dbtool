@@ -2,7 +2,6 @@ package fhj.swengb.homework.dbtool
 
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
 
-import fhj.swengb.Person._
 import fhj.swengb.homework.dbtool.db_table._
 
 import scala.util.Try
@@ -120,14 +119,14 @@ object DbTool {
     for {con <- Db.maybeConnection
          _ = User.reTable(con.createStatement())
          _ = users.map(User.toDb(con)(_))
-         u <- User.fromDb(queryAll(con))} {
+         u <- User.fromDb(User.queryAll(con))} {
       println(u)
     }
 
     for {con <- Db.maybeConnection
          _ = Location.reTable(con.createStatement())
          _ = locations.map(Location.toDb(con)(_))
-         l <- Location.fromDb(queryAll(con))} {
+         l <- Location.fromDb(Location.queryAll(con))} {
       println(l)
     }
   }

@@ -40,7 +40,7 @@ object db_table {
     }
 
     def queryAll(con: Connection): ResultSet =
-      query(con)("select * from order")
+      query(con)("select * from Location")
 
   }
 
@@ -89,7 +89,7 @@ object db_table {
     }
 
     def queryAll(con: Connection): ResultSet =
-      query(con)("select * from order")
+      query(con)("select * from User")
 
   }
 
@@ -139,7 +139,7 @@ object db_table {
     }
 
     def queryAll(con: Connection): ResultSet =
-      query(con)("select * from order")
+      query(con)("select * from employee")
 
   }
 
@@ -188,7 +188,7 @@ object db_table {
     }
 
     def queryAll(con: Connection): ResultSet =
-      query(con)("select * from order")
+      query(con)("select * from website")
 
   }
 
