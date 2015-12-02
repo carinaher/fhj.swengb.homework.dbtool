@@ -5,8 +5,10 @@ import java.net.URL
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
 import java.util.ResourceBundle
 import javafx.application.Application
+import javafx.scene.layout.BorderPane
 
 import fhj.swengb.Person._
+import fhj.swengb.homework.dbtool.db_table.{Location, User}
 import fhj.swengb.{Speakers, Person, Students}
 
 import javafx.fxml._
@@ -144,17 +146,17 @@ case class Employee(firstName: String) extends Db.DbEntity[Employee] {
 
 object DbTool {
 
-  val userOne: User = User(1,"Angelo", "Merte", "0800666666")
-  val userTwo: User = User(2,"Angela","Mertina", "0800777777")
-  val userThree: User = User(3,"Angel", "Devil", "0800888888")
-  val userFour: User = User(4,"Devil", "Angola", "0815")
+  val userOne: User = User(1, "Angelo", "Merte", "0800666666")
+  val userTwo: User = User(2, "Angela", "Mertina", "0800777777")
+  val userThree: User = User(3, "Angel", "Devil", "0800888888")
+  val userFour: User = User(4, "Devil", "Angola", "0815")
 
   val users: Set[User] = Set(userOne, userTwo, userThree, userFour)
 
-  val locationOne: Location = Location(1,"Scheißegalstraße", 66.66)
-  val locationTwo: Location = Location(2,"Schleichdi", 77.77)
-  val locationThree: Location = Location(3,"Ostblock", 88.88)
-  val locationFour: Location = Location(4,"Dreckigweg", 99.99)
+  val locationOne: Location = Location(1, "Scheißegalstraße", 66.66)
+  val locationTwo: Location = Location(2, "Schleichdi", 77.77)
+  val locationThree: Location = Location(3, "Ostblock", 88.88)
+  val locationFour: Location = Location(4, "Dreckigweg", 99.99)
 
   val locations: Set[Location] = Set(locationOne, locationTwo, locationThree, locationFour)
 
@@ -176,4 +178,4 @@ object DbTool {
     }
   }
 
-
+}
