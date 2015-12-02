@@ -1,11 +1,22 @@
 package fhj.swengb.homework.dbtool
 
+import java.awt.Button
+import java.net.URL
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
+import java.util.ResourceBundle
+import javafx.application.Application
+import javafx.fxml.{FXML, Initializable, FXMLLoader}
+import javafx.scene.image.{Image, ImageView}
+import javafx.scene.layout.{BorderPane, StackPane, AnchorPane}
+import javafx.scene.{Scene, Parent}
+import javafx.stage.Stage
+import javafx.scene.control.Label
 
 import fhj.swengb.Person._
-import fhj.swengb.{Person, Students}
+import fhj.swengb.{Speakers, Person, Students}
 
 import scala.util.Try
+import scala.util.control.NonFatal
 
 /**
   * Example to connect to a database.
@@ -102,6 +113,7 @@ case class Employee(firstName: String) extends Db.DbEntity[Employee] {
 object DbTool {
 
   def main(args: Array[String]) {
+    Application.launch(classOf[DbTool], args: _*)
     for {con <- Db.maybeConnection
          _ = Person.reTable(con.createStatement())
          _ = Students.sortedStudents.map(toDb(con)(_))
@@ -109,5 +121,35 @@ object DbTool {
       println(s)
     }
   }
+}
 
+class DbTool extends javafx.application.Application {
+
+  val Fxml = "/fhj/swengb/homework/dbtool/dbtool.fxml"
+  val Css = "fhj/swengb/homework/dbtool/dbtool.css"
+
+  val loader = new FXMLLoader(getClass.getResource(Fxml))
+
+  override def start(stage: Stage): Unit =
+    try {
+      stage.setTitle("DBTOOL")
+      loader.load[Parent]() // side effect
+      val scene = new Scene(loader.getRoot[Parent]) //loads the default scene
+      stage.setScene(scene)
+      stage.setResizable(false) //window cannot be rescaled
+      stage.getScene.getStylesheets.add(Css)
+      stage.show()
+
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+
+}
+
+class DbToolController extends Initializable {
+  @FXML var borderPane: BorderPane = _
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+  }
 }
