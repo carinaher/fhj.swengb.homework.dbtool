@@ -5,18 +5,50 @@ import java.net.URL
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
 import java.util.ResourceBundle
 import javafx.application.Application
-import javafx.fxml.{FXML, Initializable, FXMLLoader}
-import javafx.scene.image.{Image, ImageView}
-import javafx.scene.layout.{BorderPane, StackPane, AnchorPane}
-import javafx.scene.{Scene, Parent}
-import javafx.stage.Stage
-import javafx.scene.control.Label
 
 import fhj.swengb.Person._
 import fhj.swengb.{Speakers, Person, Students}
 
+import javafx.fxml._
+import javafx.scene._
+import javafx.stage._
+
 import scala.util.Try
 import scala.util.control.NonFatal
+
+
+// javafx - Application
+class DbTool extends javafx.application.Application {
+
+  val Fxml = "/fhj/swengb/homework/dbtool/dbtool.fxml"
+  val Css = "fhj/swengb/homework/dbtool/dbtool.css"
+
+  val loader = new FXMLLoader(getClass.getResource(Fxml))
+
+  override def start(stage: Stage): Unit =
+    try {
+      stage.setTitle("dbTool")
+      loader.load[Parent]()
+      val scene = new Scene(loader.getRoot[Parent]) //loads the default scene
+      stage.setScene(scene)
+      stage.setResizable(false)
+      stage.getScene.getStylesheets.add(Css)
+      stage.show()
+
+    } catch {
+      case NonFatal(e) => e.printStackTrace()
+    }
+
+}
+
+class DbToolController extends Initializable {
+  @FXML var borderPane: BorderPane = _
+
+  override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+  }
+}
+
 
 /**
   * Example to connect to a database.
@@ -112,44 +144,36 @@ case class Employee(firstName: String) extends Db.DbEntity[Employee] {
 
 object DbTool {
 
+  val userOne: User = User(1,"Angelo", "Merte", "0800666666")
+  val userTwo: User = User(2,"Angela","Mertina", "0800777777")
+  val userThree: User = User(3,"Angel", "Devil", "0800888888")
+  val userFour: User = User(4,"Devil", "Angola", "0815")
+
+  val users: Set[User] = Set(userOne, userTwo, userThree, userFour)
+
+  val locationOne: Location = Location(1,"Scheißegalstraße", 66.66)
+  val locationTwo: Location = Location(2,"Schleichdi", 77.77)
+  val locationThree: Location = Location(3,"Ostblock", 88.88)
+  val locationFour: Location = Location(4,"Dreckigweg", 99.99)
+
+  val locations: Set[Location] = Set(locationOne, locationTwo, locationThree, locationFour)
+
+
   def main(args: Array[String]) {
     Application.launch(classOf[DbTool], args: _*)
     for {con <- Db.maybeConnection
-         _ = Person.reTable(con.createStatement())
-         _ = Students.sortedStudents.map(toDb(con)(_))
-         s <- Person.fromDb(queryAll(con))} {
-      println(s)
-    }
-  }
-}
-
-class DbTool extends javafx.application.Application {
-
-  val Fxml = "/fhj/swengb/homework/dbtool/dbtool.fxml"
-  val Css = "fhj/swengb/homework/dbtool/dbtool.css"
-
-  val loader = new FXMLLoader(getClass.getResource(Fxml))
-
-  override def start(stage: Stage): Unit =
-    try {
-      stage.setTitle("DBTOOL")
-      loader.load[Parent]() // side effect
-      val scene = new Scene(loader.getRoot[Parent]) //loads the default scene
-      stage.setScene(scene)
-      stage.setResizable(false) //window cannot be rescaled
-      stage.getScene.getStylesheets.add(Css)
-      stage.show()
-
-    } catch {
-      case NonFatal(e) => e.printStackTrace()
+         _ = User.reTable(con.createStatement())
+         _ = users.map(User.toDb(con)(_))
+         u <- User.fromDb(User.queryAll(con))} {
+      println(u)
     }
 
-}
-
-class DbToolController extends Initializable {
-  @FXML var borderPane: BorderPane = _
-
-  override def initialize(location: URL, resources: ResourceBundle): Unit = {
-
+    for {con <- Db.maybeConnection
+         _ = Location.reTable(con.createStatement())
+         _ = locations.map(Location.toDb(con)(_))
+         l <- Location.fromDb(Location.queryAll(con))} {
+      println(l)
+    }
   }
-}
+
+
