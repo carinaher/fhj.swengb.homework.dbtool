@@ -11,7 +11,7 @@ import javafx.scene.image.Image
 import javafx.scene.layout.BorderPane
 
 import fhj.swengb.Person._
-import fhj.swengb.homework.dbtool.db_table.{Location, User}
+import fhj.swengb.homework.dbtool.db_table.{Website, Employee, Location, User}
 import fhj.swengb.{Db, Speakers, Person, Students}
 
 import javafx.fxml._
