@@ -19,9 +19,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
+                <Label fx:id="test" styleClass="label-text" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <GridPane.margin>
+                    </GridPane.margin>
+                </Label>
                 <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="887.0" text="INSERT" />
-                <Button fx:id="hello" mnemonicParsing="false" prefHeight="66.0" prefWidth="897.0" text="Hello World" GridPane.rowIndex="1" />
-                <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="74.0" prefWidth="892.0" GridPane.rowIndex="2" />
+            <Button fx:id="hello" mnemonicParsing="false" prefHeight="66.0" prefWidth="897.0" text="Hello World" GridPane.rowIndex="1" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="74.0" prefWidth="892.0" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="887.0" text="INSERT" />
             <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="887.0" text="SELECT" />
             <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="595.0" text="INSERT" GridPane.columnIndex="1" />

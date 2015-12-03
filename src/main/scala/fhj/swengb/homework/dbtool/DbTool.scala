@@ -5,6 +5,7 @@ import java.net.URL
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
 import java.util.ResourceBundle
 import javafx.application.Application
+import javafx.scene.control.Label
 import javafx.scene.layout.BorderPane
 
 import fhj.swengb.Person._
@@ -45,8 +46,11 @@ class DbTool extends javafx.application.Application {
 
 class DbToolController extends Initializable {
   @FXML var borderPane: BorderPane = _
+  @FXML var test: Label = _
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
+
+    test.setText("Test")
 
   }
 }
@@ -168,6 +172,7 @@ object DbTool {
          _ = users.map(User.toDb(con)(_))
          u <- User.fromDb(User.queryAll(con))} {
       println(u)
+
     }
 
     for {con <- Db.maybeConnection
