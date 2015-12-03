@@ -81,22 +81,6 @@ object Db {
 
 }
 
-case class Employee(firstName: String) extends Db.DbEntity[Employee] {
-
-  def reTable(stmt: Statement): Int = 0
-
-  def toDb(c: Connection)(t: Employee): Int = 0
-
-  def fromDb(rs: ResultSet): List[Employee] = List()
-
-  def dropTableSql: String = ""
-
-  def createTableSql: String = ""
-
-  def insertSql: String = ""
-
-}
-
 
 object DbTool {
 
@@ -114,6 +98,21 @@ object DbTool {
 
   val locations: Set[Location] = Set(locationOne, locationTwo, locationThree, locationFour)
 
+  val employeeOne: Employee = Employee(1, "Erste", "Grad", 113,"06644545455")
+  val employeeTwo: Employee = Employee(2, "Zweite", "Grad", 143,"0664445455455")
+  val employeeThree: Employee = Employee(3, "Fritz", "Franz", 153,"06643454545455")
+  val employeeFour: Employee = Employee(4, "Goti", "Nuts", 163,"06647879455")
+
+  val employees: Set[Employee] = Set(employeeOne, employeeTwo, employeeThree, employeeFour)
+
+  val websiteOne: Website = Website(1, "tester", 9848.54,"www.test.at")
+  val websiteTwo: Website = Website(2, "cooleSeite", 14949.44,"www.sehrcool.at")
+  val websiteThree: Website = Website(3, "checkThis", 4949.9,"www.checker.at")
+  val websiteFour: Website = Website(4, "bhruda", 99848.54,"www.bistDuBhruda.at")
+
+  val websites: Set[Website] = Set(websiteOne, websiteTwo, websiteThree, websiteFour)
+
+
 
   def main(args: Array[String]) {
     for {con <- Db.maybeConnection
@@ -129,8 +128,21 @@ object DbTool {
          l <- Location.fromDb(Location.queryAll(con))} {
       println(l)
     }
-  }
 
+    for {con <- Db.maybeConnection
+         _ = Employee.reTable(con.createStatement())
+         _ = employees.map(Employee.toDb(con)(_))
+         e <- Employee.fromDb(Employee.queryAll(con))} {
+      println(e)
+    }
+
+    for {con <- Db.maybeConnection
+         _ = Website.reTable(con.createStatement())
+         _ = websites.map(Website.toDb(con)(_))
+         w <- Website.fromDb(Website.queryAll(con))} {
+      println(w)
+    }
+  }
 
 
 }
