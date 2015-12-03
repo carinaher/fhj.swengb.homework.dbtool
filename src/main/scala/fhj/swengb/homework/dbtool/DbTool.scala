@@ -5,12 +5,14 @@ import java.net.URL
 import java.sql.{Connection, DriverManager, ResultSet, Statement}
 import java.util.ResourceBundle
 import javafx.application.Application
-import javafx.scene.control.Label
+import javafx.collections.{FXCollections, ObservableList}
+import javafx.scene.control.{TextArea, Label, ListView}
+import javafx.scene.image.Image
 import javafx.scene.layout.BorderPane
 
 import fhj.swengb.Person._
 import fhj.swengb.homework.dbtool.db_table.{Location, User}
-import fhj.swengb.{Speakers, Person, Students}
+import fhj.swengb.{Db, Speakers, Person, Students}
 
 import javafx.fxml._
 import javafx.scene._
@@ -45,108 +47,16 @@ class DbTool extends javafx.application.Application {
 }
 
 class DbToolController extends Initializable {
-  @FXML var borderPane: BorderPane = _
-  @FXML var test: Label = _
+  @FXML var input: Label = _
+  @FXML var output: Label = _
+
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
-
-    test.setText("Test")
-
-  }
-}
-
-
-/**
-  * Example to connect to a database.
-  *
-  * Initializes the database, inserts example data and reads it again.
-  *
-  */
-object Db {
-
-  /**
-    * A marker interface for datastructures which should be persisted to a jdbc database.
-    *
-    * @tparam T the type to be persisted / loaded
-    */
-  trait DbEntity[T] {
-
-    /**
-      * Recreates the table this entity is stored in
-      *
-      * @param stmt
-      * @return
-      */
-    def reTable(stmt: Statement): Int
-
-    /**
-      * Saves given type to the database.
-      *
-      * @param c
-      * @param t
-      * @return
-      */
-    def toDb(c: Connection)(t: T): Int
-
-    /**
-      * Given the resultset, it fetches its rows and converts them into instances of T
-      *
-      * @param rs
-      * @return
-      */
-    def fromDb(rs: ResultSet): List[T]
-
-    /**
-      * Queries the database
-      *
-      * @param con
-      * @param query
-      * @return
-      */
-    def query(con: Connection)(query: String): ResultSet = {
-      con.createStatement().executeQuery(query)
-    }
-
-    /**
-      * Sql code necessary to execute a drop table on the backing sql table
-      *
-      * @return
-      */
-    def dropTableSql: String
-
-    /**
-      * sql code for creating the entity backing table
-      */
-    def createTableSql: String
-
-    /**
-      * sql code for inserting an entity.
-      */
-    def insertSql: String
+    input.setText("Input")
+    output.setText("Output")
 
   }
-
-  lazy val maybeConnection: Try[Connection] =
-    Try(DriverManager.getConnection("jdbc:sqlite::memory:"))
-
 }
-
-case class Employee(firstName: String) extends Db.DbEntity[Employee] {
-
-  def reTable(stmt: Statement): Int = 0
-
-  def toDb(c: Connection)(t: Employee): Int = 0
-
-  def fromDb(rs: ResultSet): List[Employee] = List()
-
-  def dropTableSql: String = ""
-
-  def createTableSql: String = ""
-
-  def insertSql: String = ""
-
-}
-
 
 object DbTool {
 

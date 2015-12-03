@@ -1,43 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="813.0" prefWidth="1023.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.homework.dbtool.DbToolController">
     <bottom>
-        <GridPane prefHeight="205.0" prefWidth="889.0" BorderPane.alignment="CENTER">
+        <GridPane prefHeight="412.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
+            <RowConstraints maxHeight="74.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="160.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label fx:id="test" styleClass="label-text" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                    <GridPane.margin>
-                    </GridPane.margin>
-                </Label>
-                <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="887.0" text="INSERT" />
-            <Button fx:id="hello" mnemonicParsing="false" prefHeight="66.0" prefWidth="897.0" text="Hello World" GridPane.rowIndex="1" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="74.0" prefWidth="892.0" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="887.0" text="INSERT" />
-            <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="887.0" text="SELECT" />
-            <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="595.0" text="INSERT" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="732.0" text="UPDATE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="679.0" text="DELETE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="240.0" styleClass="grid-pane" stylesheets="@dbtool.css" text="INSERT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="input" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="299.0" text="Label" />
+            <Label fx:id="output" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="305.0" text="Label" GridPane.columnIndex="1" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="240.0" styleClass="grid-pane" stylesheets="@dbtool.css" text="UPDATE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="240.0" styleClass="grid-pane" stylesheets="@dbtool.css" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="240.0" styleClass="grid-pane" stylesheets="@dbtool.css" text="SELECT User" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="240.0" styleClass="grid-pane" stylesheets="@dbtool.css" text="SELECT Location" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
     </bottom>
-   <center>
-      <ListView id="listview" prefHeight="431.0" prefWidth="1043.0" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>
