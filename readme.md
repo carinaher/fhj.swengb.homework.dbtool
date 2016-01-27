@@ -10,11 +10,11 @@ The idea of the dbtool is to connect to a database and provide basic functionali
 #Work Distribution
 
 - DB-Tool
-	- Elza Karimova, Paul Körner, Andreas Schneider, Felix Graf
+	- Elza Karimova, Paul Kï¿½rner, Andreas Schneider, Felix Graf
 - GUI
 	- Michael Fuchs, Carina Herzog
 - Testing
-	- Phoung Ngyuen, Christoph Fürbahs, Alexander Lichtenegger
+	- Phoung Ngyuen, Christoph Fï¿½rbahs, Alexander Lichtenegger
 - Documentation
 	- Josip Blazevic, Timo Hasenbichler
 - Presentation/Git Management
@@ -22,7 +22,7 @@ The idea of the dbtool is to connect to a database and provide basic functionali
 
 #DB-Tool
 
-The basic DB-Tool implementation of Mr Ladstätter was extended Insert, Update, "Create Tables" and much more.
+The basic DB-Tool implementation of Mr Ladstï¿½tter was extended Insert, Update, "Create Tables" and much more.
     
 
 	object DbTool {
@@ -34,7 +34,7 @@ The basic DB-Tool implementation of Mr Ladstätter was extended Insert, Update, "
 	
 	  val users: Set[User] = Set(userOne, userTwo, userThree, userFour)
 	
-	  val locationOne: Location = Location(1,"Scheißegalstraße", 66.66)
+	  val locationOne: Location = Location(1,"Scheiï¿½egalstraï¿½e", 66.66)
 	  val locationTwo: Location = Location(2,"Schleichdi", 77.77)
 	  val locationThree: Location = Location(3,"Ostblock", 88.88)
 	  val locationFour: Location = Location(4,"Dreckigweg", 99.99)
@@ -120,6 +120,6 @@ the combination of fxml and css is responsible for the GUI design of the app.
 
 #About this app
 
-This app was created during the Software Engineering Basics cource with Mr Robert Ladstätter.
+This app was created during the Software Engineering Basics cource with Mr Robert Ladstï¿½tter.
 
 last modified 2015-12-3
